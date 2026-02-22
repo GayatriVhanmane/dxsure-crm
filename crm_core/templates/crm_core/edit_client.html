@@ -1,0 +1,30 @@
+{% extends 'crm_core/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Edit Client: {{ client.company_name }}</h4>
+                    <span class="badge bg-dark">ID: {{ client.id }}</span>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Update the information below for this client record.</p>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        {{ form.as_p }}
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-warning px-4">Update Client</button>
+                            <a href="{% url 'client_list' %}" class="btn btn-secondary px-4">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

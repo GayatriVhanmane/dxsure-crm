@@ -1,0 +1,69 @@
+{% extends 'crm_core/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Dashboard Overview</h2>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 mb-3">
+            <div class="card bg-primary text-white shadow-sm border-0 h-100">
+                <div class="card-body text-center py-4">
+                    <h5 class="card-title fw-light">Total Clients</h5>
+                    <h1 class="display-4 fw-bold mb-0">{{ client_count }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card bg-info text-dark shadow-sm border-0 h-100">
+                <div class="card-body text-center py-4">
+                    <h5 class="card-title fw-light">Total Employees</h5>
+                    <h1 class="display-4 fw-bold mb-0">{{ employee_count }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <h3 class="mb-4">Financial Overview</h3>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card bg-success text-white shadow-sm border-0 h-100">
+                <div class="card-body text-center py-4">
+                    <h6 class="text-uppercase fw-light mb-2">Total Earnings</h6>
+                    <h2 class="mb-0 fw-bold">₹{{ total_revenue|default:"0.00" }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card bg-danger text-white shadow-sm border-0 h-100">
+                <div class="card-body text-center py-4">
+                    <h6 class="text-uppercase fw-light mb-2">Total Payroll</h6>
+                    <h2 class="mb-0 fw-bold">₹{{ total_salary|default:"0.00" }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            {% if profit_or_loss >= 0 %}
+            <div class="card bg-light border-success border-2 shadow-sm h-100">
+                <div class="card-body text-center py-4 text-success">
+                    <h6 class="text-uppercase fw-bold mb-2">Net Profit</h6>
+                    <h2 class="mb-0 fw-bold">+ ₹{{ profit_or_loss|default:"0.00" }}</h2>
+                </div>
+            </div>
+            {% else %}
+            <div class="card bg-light border-danger border-2 shadow-sm h-100">
+                <div class="card-body text-center py-4 text-danger">
+                    <h6 class="text-uppercase fw-bold mb-2">Net Loss</h6>
+                    <h2 class="mb-0 fw-bold">₹{{ profit_or_loss|default:"0.00" }}</h2>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

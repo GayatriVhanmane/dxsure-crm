@@ -1,0 +1,26 @@
+{% extends 'crm_core/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Confirm Deletion</h4>
+                </div>
+                <div class="card-body text-center py-5">
+                    <h5 class="card-title">Are you sure?</h5>
+                    <p class="card-text mb-4">
+                        You are about to permanently delete the employee record for <strong>{{ employee.first_name }} {{ employee.last_name }}</strong>. This action cannot be undone.
+                    </p>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <a href="{% url 'employee_list' %}" class="btn btn-secondary px-4 me-2">Cancel</a>
+                        <button type="submit" class="btn btn-danger px-4">Yes, Delete Employee</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

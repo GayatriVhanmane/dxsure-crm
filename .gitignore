@@ -1,0 +1,13 @@
+# Python caches
+__pycache__/
+*.pyc
+
+# Virtual Environments
+venv/
+env/
+
+# OS generated files
+.DS_Store
+
+# Local SQLite Database (You are using MySQL, but this is good practice)
+db.sqlite3
